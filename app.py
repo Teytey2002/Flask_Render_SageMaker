@@ -3,13 +3,22 @@ import numpy as np
 import boto3
 import json
 import qrcode
+import os 
 
 app = Flask(__name__)
 
 # Configure ton endpoint SageMaker
-ENDPOINT_NAME = "pytorch-training-2025-05-05-16-41-52-802"
+#ENDPOINT_NAME = "pytorch-training-2025-05-05-16-41-52-802"
 
-runtime = boto3.client('sagemaker-runtime', region_name='eu-west-1')
+#runtime = boto3.client('sagemaker-runtime', region_name='eu-west-1')
+
+runtime = boto3.client('sagemaker-runtime',
+    region_name=os.environ["AWS_REGION"],
+    aws_access_key_id=os.environ["AWS_ACCESS_KEY_ID"],
+    aws_secret_access_key=os.environ["AWS_SECRET_ACCESS_KEY"]
+)
+
+endpoint_name = os.environ["SAGEMAKER_ENDPOINT"]
 
 @app.route("/", methods=["GET", "POST"])
 def predict():
