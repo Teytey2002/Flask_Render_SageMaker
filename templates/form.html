@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prédiction Titanic</title>
+</head>
+<body>
+    <h1>Entrez les données du passager</h1>
+    <form method="post">
+        Âge: <input type="number" step="0.01" name="age"><br>
+        Frères/Sœurs à bord (SibSp): <input type="number" name="sibsp"><br>
+        Parents/Enfants à bord (Parch): <input type="number" name="parch"><br>
+        Prix du billet (Fare): <input type="number" step="0.01" name="fare"><br>
+        <input type="submit" value="Prédire">
+    </form>
+
+    {% if prediction is not none %}
+        <h2>Probabilité de survie : {{ prediction }}</h2>
+    {% endif %}
+
+    <hr>
+    <h3>QR Code pour accéder à cette page :</h3>
+    <img src="{{ url_for('static', filename='qr.png') }}" alt="QR Code">
+</body>
+</html>
