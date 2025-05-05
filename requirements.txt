@@ -1,7 +1,4 @@
 flask
 boto3
 requests
-numpy 
-json
-qrcode
-os 
+numpy>=1.24.0
