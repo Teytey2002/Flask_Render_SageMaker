@@ -36,7 +36,7 @@ def predict():
 
         # Appeler l’endpoint SageMaker
         response = runtime.invoke_endpoint(
-            EndpointName=ENDPOINT_NAME,
+            EndpointName=endpoint_name,
             ContentType="application/json",
             Body=json.dumps(payload)
         )
