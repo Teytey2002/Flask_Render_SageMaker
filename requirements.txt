@@ -2,3 +2,4 @@ flask
 boto3
 requests
 numpy>=1.24.0
+qrcode
